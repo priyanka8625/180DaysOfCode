@@ -1,6 +1,6 @@
 //Print all numbers from 1 to n using recursion. 
 
-//approach 1: using head recursion
+//approach 1: using tail recursion
 #include<iostream>
 using namespace std;
 
