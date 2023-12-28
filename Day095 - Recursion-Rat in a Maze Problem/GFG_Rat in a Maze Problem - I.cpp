@@ -1,0 +1,44 @@
+class Solution{
+    public:
+    //array and string combinations for four directions U D L R
+    int row[4] = {-1, 1, 0, 0};
+    int col[4] = {0, 0, -1, 1};
+    string dir = "UDLR";
+    
+    vector<string> findPath(vector<vector<int>> &m, int n) {
+        vector<string> ans;
+        string path="";
+        vector<vector<bool>> visited(n, vector<bool>(n,0));
+        
+        //exceptional cases
+        if(m[0][0] == 0 || m[n-1][n-1]==0)
+            return ans;
+            
+        total(m, 0, 0, n, path, ans, visited);
+        return ans;
+    }
+    
+    void total(vector<vector<int>> &matrix, int i, int j, int n, string &path, vector<string> &ans, vector<vector<bool>> &visited){
+        if(i==n-1 && j==n-1){
+            ans.push_back(path);
+            return;
+        }
+        
+        //mark current cell visited
+        visited[i][j] = 1;
+        //move in all directions, by check validity
+        for(int k=0; k<4; k++){
+            if(valid(i+row[k], j+col[k], n) && matrix[i+row[k]][j+col[k]] && !visited[i+row[k]][j+col[k]]){
+                path.push_back(dir[k]);
+                total(matrix, i+row[k], j+col[k], n, path, ans, visited);
+                //backtrack
+                path.pop_back();
+            }
+        }
+        //backtrack
+        visited[i][j] = 0;
+    }
+    bool valid(int i, int j, int n){
+        return i>=0 && i<n && j>=0 && j<n;
+    }
+};
