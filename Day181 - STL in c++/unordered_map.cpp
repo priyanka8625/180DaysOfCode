@@ -14,7 +14,6 @@ int main(){
 
     //insertion
     mp.insert(make_pair(1, 30));
-    mp.insert(make_pair(1, 100));
     mp.insert(make_pair(2, 40));
     mp.insert(make_pair(3, 50));
     mp[4] = 60;//for insertion as well as updation
