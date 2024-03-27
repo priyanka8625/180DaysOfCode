@@ -41,7 +41,7 @@ class MaxHeap{
 			cout<<arr[index]<<" is inserted into MaxHeap!!"<<endl;
 		}
 		void del(){
-//			O(logn)
+//			O(logn):logn for heapify()
 			//in deletions of maxheap, we always delete the maximum element of heap 
 			//in short we delete the root node which always contains the max value of the heap
 			//to delete the root node, we'll use following algorithm
