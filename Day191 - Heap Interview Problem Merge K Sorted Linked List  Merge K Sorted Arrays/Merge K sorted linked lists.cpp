@@ -30,12 +30,9 @@ class Solution{
     Node * mergeKLists(Node *arr[], int K)
     {
            // Your code here
-           priority_queue<Node*, vector<Node*>, Compare> pq;
+           //insert first k elements into the pq to reduce TC to O(k) instead of using O(k*logk)
+           priority_queue<Node*, vector<Node*>, Compare> pq(arr, arr+K);
            Node* ans = new Node(0), *tail=ans;
-           
-           //push the first K elements into priority queue
-           for(int i=0; i<K; i++)
-                pq.push(arr[i]);
             
             //now pop the minimum data containing nodes and there next node into pq
             // so that by using just k extra space (for pq) we can compare all the data efficiently
@@ -55,4 +52,3 @@ class Solution{
             return ans->next;
     }
 };
-
